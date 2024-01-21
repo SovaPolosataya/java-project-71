@@ -3,7 +3,7 @@ package hexlet.code;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.Map;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,7 +17,8 @@ public class Differ {
         String normalizedFilePath2 = pathToFile + filePath2;
         if (filePath1.startsWith("./")) {
             normalizedFilePath1 = filePath1;
-        } if (filePath2.startsWith("./")) {
+        }
+        if (filePath2.startsWith("./")) {
             normalizedFilePath2 = filePath2;
         }
 
