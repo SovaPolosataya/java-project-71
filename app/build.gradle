@@ -38,13 +38,13 @@ test {
     testLogging {
         exceptionFormat "full"
         events "failed"
-        showStandardStreams = true
+        //showStandardStreams = true
     }
 }
 
 jacocoTestReport {
     dependsOn test // tests are required to run before generating the report
     reports {
-        xml.required = true
+        xml.required.set(true)
     }
 }
