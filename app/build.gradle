@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'checkstyle'
+    id 'jacoco'
 }
 
 group = 'hexlet.code'
@@ -33,4 +34,17 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport // report is always generated after tests run
+    testLogging {
+        exceptionFormat "full"
+        events "failed"
+        showStandardStreams = true
+    }
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+    reports {
+        xml.required = true
+    }
 }
