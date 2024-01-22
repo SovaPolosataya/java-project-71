@@ -15,7 +15,7 @@ class App implements Callable<Integer> {
     @Parameters(paramLabel = "filepath1", description = "path to first file")
     private String filepath1;
 
-    @Parameters(paramLabel = "filepath1", description = "path to second file")
+    @Parameters(paramLabel = "filepath2", description = "path to second file")
     private String filepath2;
 
     @Option(names = {"-f", "--format"}, paramLabel = "format", defaultValue = "stylish",

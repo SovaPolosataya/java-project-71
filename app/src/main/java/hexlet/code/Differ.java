@@ -11,19 +11,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Differ {
     public static String generate(String filePath1, String filePath2) throws Exception {
+        Path path1;
+        Path path2;
 
-        String pathToFile = "src/main/resources/";
-        String normalizedFilePath1 = pathToFile + filePath1;
-        String normalizedFilePath2 = pathToFile + filePath2;
-        if (filePath1.startsWith("./")) {
-            normalizedFilePath1 = filePath1;
+        if (!filePath1.startsWith("./")) {
+            path1 = Paths.get("src/test/resources/", filePath1).toAbsolutePath().normalize();
+        } else {
+            path1 = Paths.get(filePath1).toAbsolutePath().normalize();
         }
-        if (filePath2.startsWith("./")) {
-            normalizedFilePath2 = filePath2;
+        if (!filePath2.startsWith("./")) {
+            path2 = Paths.get("src/test/resources/", filePath2).toAbsolutePath().normalize();
+        } else {
+            path2 = Paths.get(filePath2).toAbsolutePath().normalize();
         }
-
-        Path path1 = Paths.get(normalizedFilePath1).toAbsolutePath().normalize();
-        Path path2 = Paths.get(normalizedFilePath2).toAbsolutePath().normalize();
 
         if (!Files.exists(path1)) {
             throw new Exception("File '" + path1 + "' does not exist");
