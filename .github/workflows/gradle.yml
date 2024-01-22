@@ -24,7 +24,7 @@ jobs:
       - uses: gradle/gradle-build-action@v2
         with:
           gradle-version: 8.3
-          build-root-directory: app
+          #build-root-directory: app
       - run: cd app && ./gradlew checkstyleMain
       - run: cd app && ./gradlew test
       - run: cd app && ./gradlew jacocoTestReport
@@ -35,4 +35,4 @@ jobs:
            JACOCO_SOURCE_PATH: app/src/main/java
         with:
            coverageCommand: make report
-           coverageLocations: ${{github.workspace}}/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
+           coverageLocations: ${{github.workspace}}app/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
