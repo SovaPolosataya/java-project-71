@@ -23,6 +23,8 @@ jobs:
           distribution: 'temurin'
       - uses: gradle/gradle-build-action@v2
         with:
+          arguments: build
+          build-root-directory: app
           gradle-version: 8.3
           #build-root-directory: app
       - run: cd app && ./gradlew checkstyleMain
