@@ -6,13 +6,13 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 
-public class DiffUtils {
+public class Diff {
 
-    public static final String ADDED = "ADDED";
-    public static final String DELETED = "DELETED";
-    public static final String UPDATED = "UPDATED";
-    public static final String UNMODIFIED = "UNMODIFIED";
-    public static final String CHANGE = "CHANGE";
+    public static final String ADDED = "ADDED**";
+    public static final String DELETED = "DELETED**";
+    public static final String REPLACEMENT = "REPLACEMENT**";
+    public static final String UNMODIFIED = "UNMODIFIED**";
+    public static final String CHANGE = "CHANGE**";
     public static Map<String, String> comparator(Map isMap1, Map isMap2) throws Exception {
 
         Map result = new LinkedHashMap<String, String>();
@@ -39,7 +39,7 @@ public class DiffUtils {
                 result.put(UNMODIFIED + key, value1);
             } else {
                 result.put(CHANGE + key, value1);
-                result.put(UPDATED + key, value2);
+                result.put(REPLACEMENT + key, value2);
             }
         }
         return result;
