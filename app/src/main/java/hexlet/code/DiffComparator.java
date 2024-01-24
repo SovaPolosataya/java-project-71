@@ -5,14 +5,14 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Stream;
 
-
-public class Diff {
+public class DiffComparator {
 
     public static final String ADDED = "ADDED**";
     public static final String DELETED = "DELETED**";
     public static final String REPLACEMENT = "REPLACEMENT**";
     public static final String UNMODIFIED = "UNMODIFIED**";
     public static final String CHANGE = "CHANGE**";
+
     public static Map<String, String> comparator(Map isMap1, Map isMap2) throws Exception {
 
         Map result = new LinkedHashMap<String, String>();
@@ -25,6 +25,7 @@ public class Diff {
         for (var key : sortedKeys) {
             var value1 = isMap1.get(key);
             var value2 = isMap2.get(key);
+
             if (value1 == null) {
                 value1 = "null";
             } else if (value2 == null) {
@@ -44,5 +45,4 @@ public class Diff {
         }
         return result;
     }
-
 }

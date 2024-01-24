@@ -2,13 +2,14 @@ package hexlet.code.formatters;
 
 import java.util.Map;
 
-import static hexlet.code.DiffUtils.ADDED;
-import static hexlet.code.DiffUtils.CHANGE;
-import static hexlet.code.DiffUtils.DELETED;
-import static hexlet.code.DiffUtils.UNMODIFIED;
-import static hexlet.code.DiffUtils.UPDATED;
+import static hexlet.code.DiffComparator.ADDED;
+import static hexlet.code.DiffComparator.CHANGE;
+import static hexlet.code.DiffComparator.DELETED;
+import static hexlet.code.DiffComparator.UNMODIFIED;
+import static hexlet.code.DiffComparator.REPLACEMENT;
 
 public class Plain {
+
     public static String resultProcessing(Map<String, String> isMap) {
         StringBuilder mapString = new StringBuilder();
         String text = "Property '";
@@ -20,15 +21,24 @@ public class Plain {
             if (newKey.equals("")) {
                 continue;
             } else if (newKey.contains("updated")) {
-                mapString.append("\n" + text + keyProcessing(entry.getKey())
-                        + String.valueOf(valueProcessing(entry.getValue())) + " to ");
+                mapString.append("\n"
+                        + text + keyProcessing(entry.getKey())
+                        + String.valueOf(valueProcessing(entry.getValue()))
+                        + " to ");
+
             } else if (newKey.contains("removed")) {
-                mapString.append("\n" + text + keyProcessing(entry.getKey()));
+                mapString.append("\n"
+                        + text
+                        + keyProcessing(entry.getKey()));
+
             } else if (newKey.contains("#$")) {
                 String newValue = String.valueOf(valueProcessing(entry.getValue()));
                 mapString.append(newValue);
+
             } else {
-                mapString.append("\n" + text + keyProcessing(entry.getKey())
+                mapString.append("\n"
+                        + text
+                        + keyProcessing(entry.getKey())
                         + String.valueOf(valueProcessing(entry.getValue())));
             }
         }
@@ -45,20 +55,26 @@ public class Plain {
 
         if (key.startsWith(ADDED)) {
             getKey = key.substring(ADDED.length()) + text4;
-        } else if (key.startsWith(UPDATED)) {
+
+        } else if (key.startsWith(REPLACEMENT)) {
             getKey = "#$";
+
         } else if (key.startsWith(DELETED)) {
             getKey = key.substring(DELETED.length()) + text3;
+
         } else if (key.startsWith(UNMODIFIED)) {
             getKey = "";
+
         } else if (key.startsWith(CHANGE)) {
             getKey = key.substring(CHANGE.length()) + text2;
         }
+
         return getKey;
     }
 
     public static Object valueProcessing(Object value) {
         Object getValue;
+
         if (value.equals("null")) {
             getValue = value;
         } else if (value instanceof String) {
