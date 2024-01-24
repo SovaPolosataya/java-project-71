@@ -132,4 +132,48 @@ public class TestDiffer {
         String filePath2 = "file4.json";
         assertEquals(testResult, Differ.generate(filePath1, filePath2));
     }
+
+    @Test
+    public void testGenerateJsonPlain() throws Exception {
+        String testResult = "Property 'chars2' was updated. From [complex value] to false\n"
+            + "Property 'checked' was updated. From false to true\n"
+            + "Property 'default' was updated. From null to [complex value]\n"
+            + "Property 'id' was updated. From 45 to null\n"
+            + "Property 'key1' was removed\n"
+            + "Property 'key2' was added with value: 'value2'\n"
+            + "Property 'numbers2' was updated. From [complex value] to [complex value]\n"
+            + "Property 'numbers3' was removed\n"
+            + "Property 'numbers4' was added with value: [complex value]\n"
+            + "Property 'obj1' was added with value: [complex value]\n"
+            + "Property 'setting1' was updated. From 'Some value' to 'Another value'\n"
+            + "Property 'setting2' was updated. From 200 to 300\n"
+            + "Property 'setting3' was updated. From true to 'none'";
+
+        String filePath1 = "file3.json";
+        String filePath2 = "file4.json";
+        String format = "plain";
+        assertEquals(testResult, Differ.generate(filePath1, filePath2, format));
+    }
+
+    @Test
+    public void testGenerateYamlPlain() throws Exception {
+        String testResult = "Property 'chars2' was updated. From [complex value] to false\n"
+                + "Property 'checked' was updated. From false to true\n"
+                + "Property 'default' was updated. From null to [complex value]\n"
+                + "Property 'id' was updated. From 45 to null\n"
+                + "Property 'key1' was removed\n"
+                + "Property 'key2' was added with value: 'value2'\n"
+                + "Property 'numbers2' was updated. From [complex value] to [complex value]\n"
+                + "Property 'numbers3' was removed\n"
+                + "Property 'numbers4' was added with value: [complex value]\n"
+                + "Property 'obj1' was added with value: [complex value]\n"
+                + "Property 'setting1' was updated. From 'Some value' to 'Another value'\n"
+                + "Property 'setting2' was updated. From 200 to 300\n"
+                + "Property 'setting3' was updated. From true to 'none'";
+
+        String filePath1 = "file3.yml";
+        String filePath2 = "file4.yml";
+        String format = "plain";
+        assertEquals(testResult, Differ.generate(filePath1, filePath2, format));
+    }
 }
