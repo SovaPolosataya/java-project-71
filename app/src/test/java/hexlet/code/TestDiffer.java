@@ -265,5 +265,4 @@ public class TestDiffer {
 
         assertEquals(testResult, Differ.generate(filePath1, filePath2, format));
     }
-
 }

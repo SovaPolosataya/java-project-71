@@ -68,7 +68,6 @@ public class Plain {
         } else if (key.startsWith(CHANGE)) {
             getKey = key.substring(CHANGE.length()) + text2;
         }
-
         return getKey;
     }
 
@@ -84,7 +83,6 @@ public class Plain {
         } else {
             getValue = "[complex value]";
         }
-
         return getValue;
     }
 }
