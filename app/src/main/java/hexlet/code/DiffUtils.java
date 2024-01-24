@@ -8,11 +8,12 @@ import java.util.stream.Stream;
 
 public class DiffUtils {
 
-    public static final String ADDED = "  + ";
-    public static final String DELETED = "  - ";
-    public static final String UPDATED = "  + ";
-    public static final String UNMODIFIED = "    ";
+    public static final String ADDED = "ADDED";
+    public static final String DELETED = "DELETED";
+    public static final String UPDATED = "UPDATED";
+    public static final String UNMODIFIED = "UNMODIFIED";
 
+    public static final String CHANGE = "CHANGE";
     public static Map<String, String> comparator(Map isMap1, Map isMap2) throws Exception {
 
         Map result = new LinkedHashMap<String, String>();
@@ -25,6 +26,11 @@ public class DiffUtils {
         for (var key : sortedKeys) {
             var value1 = isMap1.get(key);
             var value2 = isMap2.get(key);
+            if (value1 == null) {
+                value1 = "null";
+            } else if (value2 == null) {
+                value2 = "null";
+            }
 
             if (!isMap1.containsKey(key)) {
                 result.put(ADDED + key, value2);
@@ -33,21 +39,11 @@ public class DiffUtils {
             } else if (value1.equals(value2)) {
                 result.put(UNMODIFIED + key, value1);
             } else {
-                result.put(DELETED + key, value1);
+                result.put(CHANGE + key, value1);
                 result.put(UPDATED + key, value2);
             }
         }
         return result;
     }
-    public static String stringOfMap(Map<String, String> isMap) {
-        StringBuilder mapString = new StringBuilder("{" + "\n");
-        var entries = isMap.entrySet();
-        for (var entry : entries) {
-            mapString.append(entry.getKey() + ": " + String.valueOf(entry.getValue()) + "\n");
-        }
-        mapString.append("}");
-        String mapToString = mapString.toString();
 
-        return mapToString;
-    }
 }

@@ -19,7 +19,7 @@ class App implements Callable<Integer> {
     private String filepath2;
 
     @Option(names = {"-f", "--format"}, paramLabel = "format", defaultValue = "stylish",
-            description = "output format [default: ${DEFAULT-VALUE}]")
+            description = "output format [default: stylish]")
     String format;
 
     @Option(names = {"-h", "--help"}, usageHelp = true, description = "Show this help message and exit.")
@@ -35,7 +35,7 @@ class App implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        var diff = Differ.generate(filepath1, filepath2);
+        var diff = Differ.generate(filepath1, filepath2, format);
         System.out.println(diff);
         return null;
     }
