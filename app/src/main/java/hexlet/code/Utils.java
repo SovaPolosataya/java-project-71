@@ -1,8 +1,11 @@
 package hexlet.code;
 
+import hexlet.code.formatters.Stylish;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 
 
 public class Utils {
@@ -30,5 +33,11 @@ public class Utils {
         String content = Files.readString(path);
         return content;
     }
-    //public static void changesProcessing(Map result) {
+    public static String changesProcessing(Map result, String format) {
+        String newResult = null;
+        if (format.equals("stylish")) {
+            newResult =  Stylish.mapToString(result);
+        }
+        return newResult;
+    }
 }
