@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestDiffer {
+
     @Test
     public void testGenerateJson() throws Exception {
         String testResult = "{\n"
@@ -31,9 +32,11 @@ public class TestDiffer {
                 +  "  - setting3: true\n"
                 +  "  + setting3: none\n"
                 +  "}";
+
         String filePath1 = "file3.json";
         String filePath2 = "file4.json";
         String format = "stylish";
+
         assertEquals(testResult, Differ.generate(filePath1, filePath2, format));
     }
 
@@ -64,11 +67,14 @@ public class TestDiffer {
                 +  "  - setting3: true\n"
                 +  "  + setting3: none\n"
                 +  "}";
+
         String filePath1 = "file3.yml";
         String filePath2 = "file4.yml";
         String format = "stylish";
+
         assertEquals(testResult, Differ.generate(filePath1, filePath2, format));
     }
+
     @Test
     public void testGenerateYmlAndJson() throws Exception {
         String testResult = "{\n"
@@ -96,11 +102,14 @@ public class TestDiffer {
                 +  "  - setting3: true\n"
                 +  "  + setting3: none\n"
                 +  "}";
+
         String filePath1 = "file3.yml";
         String filePath2 = "file4.json";
         String format = "stylish";
+
         assertEquals(testResult, Differ.generate(filePath1, filePath2, format));
     }
+
     @Test
     public void testGenerateWithoutFormat() throws Exception {
         String testResult = "{\n"
@@ -128,8 +137,10 @@ public class TestDiffer {
                 +  "  - setting3: true\n"
                 +  "  + setting3: none\n"
                 +  "}";
+
         String filePath1 = "file3.json";
         String filePath2 = "file4.json";
+
         assertEquals(testResult, Differ.generate(filePath1, filePath2));
     }
 
@@ -152,6 +163,7 @@ public class TestDiffer {
         String filePath1 = "file3.json";
         String filePath2 = "file4.json";
         String format = "plain";
+
         assertEquals(testResult, Differ.generate(filePath1, filePath2, format));
     }
 
@@ -174,6 +186,84 @@ public class TestDiffer {
         String filePath1 = "file3.yml";
         String filePath2 = "file4.yml";
         String format = "plain";
+
         assertEquals(testResult, Differ.generate(filePath1, filePath2, format));
     }
+
+    @Test
+    public void testGenerateJsonOfJson() throws Exception {
+        String testResult = "{\n"
+                + "  \"UNMODIFIED**chars1\" : [ \"a\", \"b\", \"c\" ],\n"
+                + "  \"CHANGE**chars2\" : [ \"d\", \"e\", \"f\" ],\n"
+                + "  \"REPLACEMENT**chars2\" : false,\n"
+                + "  \"CHANGE**checked\" : false,\n"
+                + "  \"REPLACEMENT**checked\" : true,\n"
+                + "  \"CHANGE**default\" : \"null\",\n"
+                + "  \"REPLACEMENT**default\" : [ \"value1\", \"value2\" ],\n"
+                + "  \"CHANGE**id\" : 45,\n"
+                + "  \"REPLACEMENT**id\" : \"null\",\n"
+                + "  \"DELETED**key1\" : \"value1\",\n"
+                + "  \"ADDED**key2\" : \"value2\",\n"
+                + "  \"UNMODIFIED**numbers1\" : [ 1, 2, 3, 4 ],\n"
+                + "  \"CHANGE**numbers2\" : [ 2, 3, 4, 5 ],\n"
+                + "  \"REPLACEMENT**numbers2\" : [ 22, 33, 44, 55 ],\n"
+                + "  \"DELETED**numbers3\" : [ 3, 4, 5 ],\n"
+                + "  \"ADDED**numbers4\" : [ 4, 5, 6 ],\n"
+                + "  \"ADDED**obj1\" : {\n"
+                + "    \"nestedKey\" : \"value\",\n"
+                + "    \"isNested\" : true\n"
+                + "  },\n"
+                + "  \"CHANGE**setting1\" : \"Some value\",\n"
+                + "  \"REPLACEMENT**setting1\" : \"Another value\",\n"
+                + "  \"CHANGE**setting2\" : 200,\n"
+                + "  \"REPLACEMENT**setting2\" : 300,\n"
+                + "  \"CHANGE**setting3\" : true,\n"
+                + "  \"REPLACEMENT**setting3\" : \"none\"\n"
+                + "}";
+
+        String filePath1 = "file3.json";
+        String filePath2 = "file4.json";
+        String format = "json";
+
+        assertEquals(testResult, Differ.generate(filePath1, filePath2, format));
+    }
+
+    @Test
+    public void testGenerateYamlOfJson() throws Exception {
+        String testResult = "{\n"
+                + "  \"UNMODIFIED**chars1\" : [ \"a\", \"b\", \"c\" ],\n"
+                + "  \"CHANGE**chars2\" : [ \"d\", \"e\", \"f\" ],\n"
+                + "  \"REPLACEMENT**chars2\" : false,\n"
+                + "  \"CHANGE**checked\" : false,\n"
+                + "  \"REPLACEMENT**checked\" : true,\n"
+                + "  \"CHANGE**default\" : \"null\",\n"
+                + "  \"REPLACEMENT**default\" : [ \"value1\", \"value2\" ],\n"
+                + "  \"CHANGE**id\" : 45,\n"
+                + "  \"REPLACEMENT**id\" : \"null\",\n"
+                + "  \"DELETED**key1\" : \"value1\",\n"
+                + "  \"ADDED**key2\" : \"value2\",\n"
+                + "  \"UNMODIFIED**numbers1\" : [ 1, 2, 3, 4 ],\n"
+                + "  \"CHANGE**numbers2\" : [ 2, 3, 4, 5 ],\n"
+                + "  \"REPLACEMENT**numbers2\" : [ 22, 33, 44, 55 ],\n"
+                + "  \"DELETED**numbers3\" : [ 3, 4, 5 ],\n"
+                + "  \"ADDED**numbers4\" : [ 4, 5, 6 ],\n"
+                + "  \"ADDED**obj1\" : {\n"
+                + "    \"nestedKey\" : \"value\",\n"
+                + "    \"isNested\" : true\n"
+                + "  },\n"
+                + "  \"CHANGE**setting1\" : \"Some value\",\n"
+                + "  \"REPLACEMENT**setting1\" : \"Another value\",\n"
+                + "  \"CHANGE**setting2\" : 200,\n"
+                + "  \"REPLACEMENT**setting2\" : 300,\n"
+                + "  \"CHANGE**setting3\" : true,\n"
+                + "  \"REPLACEMENT**setting3\" : \"none\"\n"
+                + "}";
+
+        String filePath1 = "file3.yml";
+        String filePath2 = "file4.yml";
+        String format = "json";
+
+        assertEquals(testResult, Differ.generate(filePath1, filePath2, format));
+    }
+
 }
