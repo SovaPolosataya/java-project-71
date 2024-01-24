@@ -23,14 +23,14 @@ public class DiffComparator {
         var sortedKeys = Stream.concat(keys1.stream(), keys2.stream()).sorted().toList();
 
         for (var key : sortedKeys) {
-            var value1 = isMap1.get(key);
-            var value2 = isMap2.get(key);
+            var value1 = valueNull(isMap1.get(key));
+            var value2 = valueNull(isMap2.get(key));
 
-            if (value1 == null) {
-                value1 = "null";
-            } else if (value2 == null) {
-                value2 = "null";
-            }
+            //if (value1 == null) {
+            //    value1 = "null";
+            //} else if (value2 == null) {
+            //    value2 = "null";
+            //}
 
             if (!isMap1.containsKey(key)) {
                 result.put(ADDED + key, value2);
@@ -44,5 +44,12 @@ public class DiffComparator {
             }
         }
         return result;
+    }
+
+    public static Object valueNull(Object value) {
+        if (value == null) {
+            value = "null";
+        }
+        return value;
     }
 }

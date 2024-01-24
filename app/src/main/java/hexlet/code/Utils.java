@@ -23,7 +23,7 @@ public class Utils {
         Path path;
 
         if (!filePath.startsWith("./")) {
-            path = Paths.get("src/test/resources/", filePath).toAbsolutePath().normalize();
+            path = Paths.get("src", "test", "resources", filePath).toAbsolutePath().normalize();
         } else {
             path = Paths.get(filePath).toAbsolutePath().normalize();
         }
