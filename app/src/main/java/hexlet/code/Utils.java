@@ -22,7 +22,7 @@ public class Utils {
     public static String getFilePath(String filePath) throws Exception {
         Path path;
 
-        if (!filePath.startsWith(".") || !filePath.startsWith("/")) {
+        if (!filePath.contains("/")) {
             path = Paths.get("src", "test", "resources", filePath).toAbsolutePath().normalize();
         } else {
             path = Paths.get(filePath).toAbsolutePath().normalize();
