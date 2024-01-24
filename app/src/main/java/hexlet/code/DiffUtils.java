@@ -12,7 +12,6 @@ public class DiffUtils {
     public static final String DELETED = "DELETED";
     public static final String UPDATED = "UPDATED";
     public static final String UNMODIFIED = "UNMODIFIED";
-
     public static final String CHANGE = "CHANGE";
     public static Map<String, String> comparator(Map isMap1, Map isMap2) throws Exception {
 

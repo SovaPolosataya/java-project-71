@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import hexlet.code.formatters.Plain;
 import hexlet.code.formatters.Stylish;
 
 import java.nio.file.Files;
@@ -33,10 +34,12 @@ public class Utils {
         String content = Files.readString(path);
         return content;
     }
-    public static String changesProcessing(Map result, String format) {
+    public static String choiceOfStyle(Map result, String format) {
         String newResult = null;
         if (format.equals("stylish")) {
-            newResult =  Stylish.mapToString(result);
+            newResult = Stylish.resultProcessing(result);
+        } else if (format.equals("plain")) {
+            newResult = Plain.resultProcessing(result);
         }
         return newResult;
     }

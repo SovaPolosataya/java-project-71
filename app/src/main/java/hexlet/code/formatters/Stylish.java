@@ -12,12 +12,12 @@ import static hexlet.code.DiffUtils.UPDATED;
 
 public class Stylish {
 
-    public static String mapToString(Map<String, String> isMap) {
+    public static String resultProcessing(Map<String, String> isMap) {
         StringBuilder mapString = new StringBuilder();
         mapString.append("{" + "\n");
         var entries = isMap.entrySet();
         for (var entry : entries) {
-            mapString.append(replaceResult(entry.getKey()) + ": " + String.valueOf(entry.getValue()) + "\n");
+            mapString.append(keyProcessing(entry.getKey()) + ": " + String.valueOf(entry.getValue()) + "\n");
         }
         mapString.append("}");
         String mapToString = mapString.toString();
@@ -25,7 +25,7 @@ public class Stylish {
         return mapToString;
     }
 
-    public static String replaceResult(String key) {
+    public static String keyProcessing(String key) {
         String getKey = null;
         if (key.startsWith(ADDED)) {
             getKey = "  + " + key.substring(ADDED.length());

@@ -16,7 +16,7 @@ public class Differ {
         var mapFile2 = parser(path2, getFileFormat(filePath2));
 
         Map<String, String> resultMap = DiffUtils.comparator(mapFile1, mapFile2);
-        String result = Utils.changesProcessing(resultMap, format);
+        String result = Utils.choiceOfStyle(resultMap, format);
 
         return result;
     }
