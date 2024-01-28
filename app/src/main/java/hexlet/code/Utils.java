@@ -1,13 +1,9 @@
 package hexlet.code;
 
-import hexlet.code.formatters.Json;
-import hexlet.code.formatters.Plain;
-import hexlet.code.formatters.Stylish;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Map;
 
 public class Utils {
 
@@ -34,24 +30,5 @@ public class Utils {
 
         String content = Files.readString(path);
         return content;
-    }
-
-    public static String choiceOfStyle(Map result, String format) throws Exception {
-        String newResult;
-
-        switch (format) {
-            case "stylish":
-                newResult = Stylish.resultProcessing(result);
-                break;
-            case "plain":
-                newResult = Plain.resultProcessing(result);
-                break;
-            case "json":
-                newResult = Json.resultProcessing(result);
-                break;
-            default:
-                throw new Exception("The file format '" + format + "' is not supported.");
-        }
-        return newResult;
     }
 }
