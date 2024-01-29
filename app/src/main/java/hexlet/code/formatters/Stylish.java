@@ -3,7 +3,7 @@ package hexlet.code.formatters;
 import java.util.Map;
 
 import static hexlet.code.DiffComparator.ADDED;
-import static hexlet.code.DiffComparator.CHANGE;
+import static hexlet.code.DiffComparator.CHANGED;
 import static hexlet.code.DiffComparator.DELETED;
 import static hexlet.code.DiffComparator.UNMODIFIED;
 import static hexlet.code.DiffComparator.REPLACEMENT;
@@ -36,10 +36,9 @@ public class Stylish {
             getKey = "  - " + key.substring(DELETED.length());
         } else if (key.startsWith(UNMODIFIED)) {
             getKey = "    " + key.substring(UNMODIFIED.length());
-        } else if (key.startsWith(CHANGE)) {
-            getKey = "  - " + key.substring(CHANGE.length());
+        } else if (key.startsWith(CHANGED)) {
+            getKey = "  - " + key.substring(CHANGED.length());
         }
         return getKey;
-
     }
 }

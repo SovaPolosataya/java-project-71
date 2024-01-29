@@ -3,7 +3,7 @@ package hexlet.code.formatters;
 import java.util.Map;
 
 import static hexlet.code.DiffComparator.ADDED;
-import static hexlet.code.DiffComparator.CHANGE;
+import static hexlet.code.DiffComparator.CHANGED;
 import static hexlet.code.DiffComparator.DELETED;
 import static hexlet.code.DiffComparator.UNMODIFIED;
 import static hexlet.code.DiffComparator.REPLACEMENT;
@@ -13,62 +13,49 @@ public class Plain {
     public static String resultProcessing(Map<String, String> isMap) {
         StringBuilder mapString = new StringBuilder();
         String text = "Property '";
+        String text2 = "' was updated. From ";
+        String text3 = "' was removed";
+        String text4 = "' was added with value: ";
 
         var entries = isMap.entrySet();
         for (var entry : entries) {
-            String newKey = keyProcessing(entry.getKey());
+            String startKey;
 
-            if (newKey.equals("")) {
+            if (entry.getKey().startsWith(UNMODIFIED)) {
                 continue;
-            } else if (newKey.contains("updated")) {
+
+            } else if (entry.getKey().startsWith(CHANGED)) {
+                startKey = CHANGED;
                 mapString.append("\n"
-                        + text + keyProcessing(entry.getKey())
+                        + text
+                        + entry.getKey().substring(startKey.length())
+                        + text2
                         + String.valueOf(valueProcessing(entry.getValue()))
                         + " to ");
 
-            } else if (newKey.contains("removed")) {
-                mapString.append("\n"
-                        + text
-                        + keyProcessing(entry.getKey()));
-
-            } else if (newKey.contains("#$")) {
+            } else if (entry.getKey().startsWith(REPLACEMENT)) {
                 String newValue = String.valueOf(valueProcessing(entry.getValue()));
                 mapString.append(newValue);
 
-            } else {
+            } else if (entry.getKey().startsWith(DELETED)) {
+                startKey = DELETED;
                 mapString.append("\n"
                         + text
-                        + keyProcessing(entry.getKey())
+                        + entry.getKey().substring(startKey.length())
+                        + text3);
+
+            } else {
+                startKey = ADDED;
+                mapString.append("\n"
+                        + text
+                        + entry.getKey().substring(startKey.length())
+                        + text4
                         + String.valueOf(valueProcessing(entry.getValue())));
             }
         }
         String mapToString = mapString.toString().trim();
 
         return mapToString;
-    }
-
-    public static String keyProcessing(String key) {
-        String getKey = null;
-        String text2 = "' was updated. From ";
-        String text3 = "' was removed";
-        String text4 = "' was added with value: ";
-
-        if (key.startsWith(ADDED)) {
-            getKey = key.substring(ADDED.length()) + text4;
-
-        } else if (key.startsWith(REPLACEMENT)) {
-            getKey = "#$";
-
-        } else if (key.startsWith(DELETED)) {
-            getKey = key.substring(DELETED.length()) + text3;
-
-        } else if (key.startsWith(UNMODIFIED)) {
-            getKey = "";
-
-        } else if (key.startsWith(CHANGE)) {
-            getKey = key.substring(CHANGE.length()) + text2;
-        }
-        return getKey;
     }
 
     public static Object valueProcessing(Object value) {
