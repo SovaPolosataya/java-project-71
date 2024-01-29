@@ -12,7 +12,7 @@ public class Plain {
 
     public static String resultProcessing(Map<String, String> isMap) {
         StringBuilder mapString = new StringBuilder();
-        String text = "Property '";
+        String text1 = "Property '";
         String text2 = "' was updated. From ";
         String text3 = "' was removed";
         String text4 = "' was added with value: ";
@@ -27,7 +27,7 @@ public class Plain {
             } else if (entry.getKey().startsWith(CHANGED)) {
                 startKey = CHANGED;
                 mapString.append("\n"
-                        + text
+                        + text1
                         + entry.getKey().substring(startKey.length())
                         + text2
                         + String.valueOf(valueProcessing(entry.getValue()))
@@ -40,14 +40,14 @@ public class Plain {
             } else if (entry.getKey().startsWith(DELETED)) {
                 startKey = DELETED;
                 mapString.append("\n"
-                        + text
+                        + text1
                         + entry.getKey().substring(startKey.length())
                         + text3);
 
             } else {
                 startKey = ADDED;
                 mapString.append("\n"
-                        + text
+                        + text1
                         + entry.getKey().substring(startKey.length())
                         + text4
                         + String.valueOf(valueProcessing(entry.getValue())));
