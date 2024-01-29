@@ -11,7 +11,7 @@ public class DiffComparator {
     public static final String DELETED = "DELETED**";
     public static final String REPLACEMENT = "REPLACEMENT**";
     public static final String UNMODIFIED = "UNMODIFIED**";
-    public static final String CHANGE = "CHANGE**";
+    public static final String CHANGED = "CHANGED**";
 
     public static Map<String, String> comparator(Map isMap1, Map isMap2) throws Exception {
 
@@ -26,12 +26,6 @@ public class DiffComparator {
             var value1 = valueNull(isMap1.get(key));
             var value2 = valueNull(isMap2.get(key));
 
-            //if (value1 == null) {
-            //    value1 = "null";
-            //} else if (value2 == null) {
-            //    value2 = "null";
-            //}
-
             if (!isMap1.containsKey(key)) {
                 result.put(ADDED + key, value2);
             } else if (!isMap2.containsKey(key)) {
@@ -39,7 +33,7 @@ public class DiffComparator {
             } else if (value1.equals(value2)) {
                 result.put(UNMODIFIED + key, value1);
             } else {
-                result.put(CHANGE + key, value1);
+                result.put(CHANGED + key, value1);
                 result.put(REPLACEMENT + key, value2);
             }
         }
