@@ -1,12 +1,10 @@
 package hexlet.code;
 
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Utils {
-
     public static String getFileFormat(String filePath) throws Exception {
         String format;
 

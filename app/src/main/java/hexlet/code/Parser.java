@@ -7,7 +7,6 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import java.util.Map;
 
 public class Parser {
-
     public static Map<String, Object> parser(String content, String format) throws Exception {
 
         if (!format.equals("json") && !format.equals("yml")) {

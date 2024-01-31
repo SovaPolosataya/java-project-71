@@ -9,7 +9,6 @@ import static hexlet.code.DiffComparator.UNMODIFIED;
 import static hexlet.code.DiffComparator.REPLACEMENT;
 
 public class Plain {
-
     public static String resultProcessing(Map<String, String> isMap) {
         StringBuilder mapString = new StringBuilder();
         String text1 = "Property '";
