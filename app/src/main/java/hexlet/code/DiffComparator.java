@@ -13,22 +13,22 @@ public class DiffComparator {
     public static final String UNMODIFIED = "UNMODIFIED**";
     public static final String CHANGED = "CHANGED**";
 
-    public static Map<String, String> comparator(Map isMap1, Map isMap2) throws Exception {
+    public static Map<String, String> comparator(Map map1, Map map2) throws Exception {
 
         Map result = new LinkedHashMap<String, String>();
         var keys1 = new ArrayList<String>();
         var keys2 = new ArrayList<String>();
-        keys1.addAll(isMap1.keySet());
-        keys2.addAll(isMap2.keySet());
+        keys1.addAll(map1.keySet());
+        keys2.addAll(map2.keySet());
         var sortedKeys = Stream.concat(keys1.stream(), keys2.stream()).sorted().toList();
 
         for (var key : sortedKeys) {
-            var value1 = valueNull(isMap1.get(key));
-            var value2 = valueNull(isMap2.get(key));
+            var value1 = valueNull(map1.get(key));
+            var value2 = valueNull(map2.get(key));
 
-            if (!isMap1.containsKey(key)) {
+            if (!map1.containsKey(key)) {
                 result.put(ADDED + key, value2);
-            } else if (!isMap2.containsKey(key)) {
+            } else if (!map2.containsKey(key)) {
                 result.put(DELETED + key, value1);
             } else if (value1.equals(value2)) {
                 result.put(UNMODIFIED + key, value1);
