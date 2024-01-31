@@ -9,11 +9,11 @@ import static hexlet.code.DiffComparator.UNMODIFIED;
 import static hexlet.code.DiffComparator.REPLACEMENT;
 
 public class Stylish {
-    public static String resultProcessing(Map<String, String> isMap) {
+    public static String resultProcessing(Map<String, String> resultMap) {
         StringBuilder mapString = new StringBuilder();
         mapString.append("{" + "\n");
 
-        var entries = isMap.entrySet();
+        var entries = resultMap.entrySet();
         for (var entry : entries) {
             mapString.append(keyProcessing(entry.getKey()) + ": " + String.valueOf(entry.getValue()) + "\n");
         }

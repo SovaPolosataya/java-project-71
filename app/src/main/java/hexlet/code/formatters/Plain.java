@@ -9,14 +9,14 @@ import static hexlet.code.DiffComparator.UNMODIFIED;
 import static hexlet.code.DiffComparator.REPLACEMENT;
 
 public class Plain {
-    public static String resultProcessing(Map<String, String> isMap) {
+    public static String resultProcessing(Map<String, String> resultMap) {
         StringBuilder mapString = new StringBuilder();
         String text1 = "Property '";
         String text2 = "' was updated. From ";
         String text3 = "' was removed";
         String text4 = "' was added with value: ";
 
-        var entries = isMap.entrySet();
+        var entries = resultMap.entrySet();
         for (var entry : entries) {
             String startKey;
 
