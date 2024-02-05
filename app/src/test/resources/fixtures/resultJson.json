@@ -1,0 +1,28 @@
+{
+  "UNMODIFIED**chars1" : [ "a", "b", "c" ],
+  "CHANGED**chars2" : [ "d", "e", "f" ],
+  "REPLACEMENT**chars2" : false,
+  "CHANGED**checked" : false,
+  "REPLACEMENT**checked" : true,
+  "CHANGED**default" : "null",
+  "REPLACEMENT**default" : [ "value1", "value2" ],
+  "CHANGED**id" : 45,
+  "REPLACEMENT**id" : "null",
+  "DELETED**key1" : "value1",
+  "ADDED**key2" : "value2",
+  "UNMODIFIED**numbers1" : [ 1, 2, 3, 4 ],
+  "CHANGED**numbers2" : [ 2, 3, 4, 5 ],
+  "REPLACEMENT**numbers2" : [ 22, 33, 44, 55 ],
+  "DELETED**numbers3" : [ 3, 4, 5 ],
+  "ADDED**numbers4" : [ 4, 5, 6 ],
+  "ADDED**obj1" : {
+    "nestedKey" : "value",
+    "isNested" : true
+  },
+  "CHANGED**setting1" : "Some value",
+  "REPLACEMENT**setting1" : "Another value",
+  "CHANGED**setting2" : 200,
+  "REPLACEMENT**setting2" : 300,
+  "CHANGED**setting3" : true,
+  "REPLACEMENT**setting3" : "none"
+}
