@@ -4,25 +4,20 @@ import hexlet.code.formatters.Json;
 import hexlet.code.formatters.Plain;
 import hexlet.code.formatters.Stylish;
 
-import java.util.Map;
+import java.util.List;
 
 public class Formatter {
-    public static String choiceOfStyle(Map result, String format) throws Exception {
-        String newResult;
+    public static String choiceOfStyle(List result, String format) throws Exception {
 
         switch (format) {
             case "stylish":
-                newResult = Stylish.resultProcessing(result);
-                break;
+                return Stylish.resultProcessing(result);
             case "plain":
-                newResult = Plain.resultProcessing(result);
-                break;
+                return Plain.resultProcessing(result);
             case "json":
-                newResult = Json.resultProcessing(result);
-                break;
+                return Json.resultProcessing(result);
             default:
                 throw new Exception("The format '" + format + "' is not supported.");
         }
-        return newResult;
     }
 }
