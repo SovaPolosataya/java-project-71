@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,18 +14,18 @@ public class Utils {
         return format;
     }
 
-    public static String getFilePath(String filePath) throws Exception {
-        Path path;
+    public static Path getFilePath(String filePath) throws Exception {
 
-        if (!filePath.contains("/")) {
-            path = Paths.get("src", "test", "resources", filePath).toAbsolutePath().normalize();
-        } else {
-            path = Paths.get(filePath).toAbsolutePath().normalize();
-        }
+        Path path = Paths.get(filePath).toAbsolutePath().normalize();
 
         if (!Files.exists(path)) {
             throw new Exception("File '" + path + "' does not exist");
         }
+
+        return path;
+    }
+
+    public static String readFile(Path path) throws IOException {
 
         String content = Files.readString(path);
         return content;
