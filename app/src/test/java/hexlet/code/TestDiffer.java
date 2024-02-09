@@ -10,12 +10,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestDiffer {
 
+    private static final String PATH = "src/test/resources/fixtures/";
+
     @Test
     public void testGenerateJson() throws Exception {
-        String testResult = getFilePathFixtures("resultStylish.json");
+        String testResult = getPathAndReadFixtures("resultStylish.json");
 
-        String filePath1 = "file1.json";
-        String filePath2 = "file2.json";
+        String filePath1 = PATH + "file1.json";
+        String filePath2 = PATH + "file2.json";
         String format = "stylish";
 
         assertEquals(testResult, Differ.generate(filePath1, filePath2, format));
@@ -23,10 +25,10 @@ public class TestDiffer {
 
     @Test
     public void testGenerateYml() throws Exception {
-        String testResult = getFilePathFixtures("resultStylish.json");
+        String testResult = getPathAndReadFixtures("resultStylish.json");
 
-        String filePath1 = "file1.yml";
-        String filePath2 = "file2.yml";
+        String filePath1 = PATH + "file1.yml";
+        String filePath2 = PATH + "file2.yml";
         String format = "stylish";
 
         assertEquals(testResult, Differ.generate(filePath1, filePath2, format));
@@ -34,10 +36,10 @@ public class TestDiffer {
 
     @Test
     public void testGenerateYmlAndJson() throws Exception {
-        String testResult = getFilePathFixtures("resultStylish.json");
+        String testResult = getPathAndReadFixtures("resultStylish.json");
 
-        String filePath1 = "file1.yml";
-        String filePath2 = "file2.json";
+        String filePath1 = PATH + "file1.yml";
+        String filePath2 = PATH + "file2.json";
         String format = "stylish";
 
         assertEquals(testResult, Differ.generate(filePath1, filePath2, format));
@@ -45,20 +47,20 @@ public class TestDiffer {
 
     @Test
     public void testGenerateWithoutFormat() throws Exception {
-        String testResult = getFilePathFixtures("resultStylish.json");
+        String testResult = getPathAndReadFixtures("resultStylish.json");
 
-        String filePath1 = "file1.json";
-        String filePath2 = "file2.json";
+        String filePath1 = PATH + "file1.json";
+        String filePath2 = PATH + "file2.json";
 
         assertEquals(testResult, Differ.generate(filePath1, filePath2));
     }
 
     @Test
     public void testGenerateJsonPlain() throws Exception {
-        String testResult = getFilePathFixtures("resultPlain.json");
+        String testResult = getPathAndReadFixtures("resultPlain.json");
 
-        String filePath1 = "file1.json";
-        String filePath2 = "file2.json";
+        String filePath1 = PATH + "file1.json";
+        String filePath2 = PATH + "file2.json";
         String format = "plain";
 
         assertEquals(testResult, Differ.generate(filePath1, filePath2, format));
@@ -66,10 +68,10 @@ public class TestDiffer {
 
     @Test
     public void testGenerateYamlPlain() throws Exception {
-        String testResult = getFilePathFixtures("resultPlain.json");
+        String testResult = getPathAndReadFixtures("resultPlain.json");
 
-        String filePath1 = "file1.yml";
-        String filePath2 = "file2.yml";
+        String filePath1 = PATH + "file1.yml";
+        String filePath2 = PATH + "file2.yml";
         String format = "plain";
 
         assertEquals(testResult, Differ.generate(filePath1, filePath2, format));
@@ -77,10 +79,10 @@ public class TestDiffer {
 
     @Test
     public void testGenerateJsonOfJson() throws Exception {
-        String testResult = getFilePathFixtures("resultJson.json");
+        String testResult = getPathAndReadFixtures("resultJson.json");
 
-        String filePath1 = "file1.json";
-        String filePath2 = "file2.json";
+        String filePath1 = PATH + "file1.json";
+        String filePath2 = PATH + "file2.json";
         String format = "json";
 
         assertEquals(testResult, Differ.generate(filePath1, filePath2, format));
@@ -88,16 +90,16 @@ public class TestDiffer {
 
     @Test
     public void testGenerateYamlOfJson() throws Exception {
-        String testResult = getFilePathFixtures("resultJson.json");
+        String testResult = getPathAndReadFixtures("resultJson.json");
 
-        String filePath1 = "file1.yml";
-        String filePath2 = "file2.yml";
+        String filePath1 = PATH + "file1.yml";
+        String filePath2 = PATH + "file2.yml";
         String format = "json";
 
         assertEquals(testResult, Differ.generate(filePath1, filePath2, format));
     }
 
-    public static String getFilePathFixtures(String filePath) throws Exception {
+    public static String getPathAndReadFixtures(String filePath) throws Exception {
 
         Path path = Paths.get("src", "test", "resources", "fixtures", filePath)
                 .toAbsolutePath().normalize();
