@@ -14,7 +14,7 @@ public class TestDiffer {
 
     @Test
     public void testGenerateJson() throws Exception {
-        String testResult = getPathAndReadFixtures("resultStylish.json");
+        String testResult = readFixtures(getPathFixtures("resultStylish.json"));
 
         String filePath1 = PATH + "file1.json";
         String filePath2 = PATH + "file2.json";
@@ -25,7 +25,7 @@ public class TestDiffer {
 
     @Test
     public void testGenerateYml() throws Exception {
-        String testResult = getPathAndReadFixtures("resultStylish.json");
+        String testResult = readFixtures(getPathFixtures("resultStylish.json"));
 
         String filePath1 = PATH + "file1.yml";
         String filePath2 = PATH + "file2.yml";
@@ -36,7 +36,7 @@ public class TestDiffer {
 
     @Test
     public void testGenerateYmlAndJson() throws Exception {
-        String testResult = getPathAndReadFixtures("resultStylish.json");
+        String testResult = readFixtures(getPathFixtures("resultStylish.json"));
 
         String filePath1 = PATH + "file1.yml";
         String filePath2 = PATH + "file2.json";
@@ -47,7 +47,7 @@ public class TestDiffer {
 
     @Test
     public void testGenerateWithoutFormat() throws Exception {
-        String testResult = getPathAndReadFixtures("resultStylish.json");
+        String testResult = readFixtures(getPathFixtures("resultStylish.json"));
 
         String filePath1 = PATH + "file1.json";
         String filePath2 = PATH + "file2.json";
@@ -57,7 +57,7 @@ public class TestDiffer {
 
     @Test
     public void testGenerateJsonPlain() throws Exception {
-        String testResult = getPathAndReadFixtures("resultPlain.json");
+        String testResult = readFixtures(getPathFixtures("resultPlain.json"));
 
         String filePath1 = PATH + "file1.json";
         String filePath2 = PATH + "file2.json";
@@ -68,7 +68,7 @@ public class TestDiffer {
 
     @Test
     public void testGenerateYamlPlain() throws Exception {
-        String testResult = getPathAndReadFixtures("resultPlain.json");
+        String testResult = readFixtures(getPathFixtures("resultPlain.json"));
 
         String filePath1 = PATH + "file1.yml";
         String filePath2 = PATH + "file2.yml";
@@ -79,7 +79,7 @@ public class TestDiffer {
 
     @Test
     public void testGenerateJsonOfJson() throws Exception {
-        String testResult = getPathAndReadFixtures("resultJson.json");
+        String testResult = readFixtures(getPathFixtures("resultJson.json"));
 
         String filePath1 = PATH + "file1.json";
         String filePath2 = PATH + "file2.json";
@@ -90,7 +90,7 @@ public class TestDiffer {
 
     @Test
     public void testGenerateYamlOfJson() throws Exception {
-        String testResult = getPathAndReadFixtures("resultJson.json");
+        String testResult = readFixtures(getPathFixtures("resultJson.json"));
 
         String filePath1 = PATH + "file1.yml";
         String filePath2 = PATH + "file2.yml";
@@ -99,7 +99,7 @@ public class TestDiffer {
         assertEquals(testResult, Differ.generate(filePath1, filePath2, format));
     }
 
-    public static String getPathAndReadFixtures(String filePath) throws Exception {
+    public static Path getPathFixtures(String filePath) throws Exception {
 
         Path path = Paths.get("src", "test", "resources", "fixtures", filePath)
                 .toAbsolutePath().normalize();
@@ -108,6 +108,10 @@ public class TestDiffer {
             throw new Exception("File '" + path + "' does not exist");
         }
 
+        return path;
+    }
+
+    public static String readFixtures(Path path) throws Exception {
         String content = Files.readString(path);
         return content;
     }
