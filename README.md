@@ -8,8 +8,8 @@
 
 [JSON & YAML](https://asciinema.org/a/439NL0ezQ57nBDoRpAh37Zofq)
 
-[JSON & YAML with Stylish](https://asciinema.org/a/x2Hu83fPeOXvMIDsnzXmjj6k3)
+[JSON & YAML with Stylish](https://asciinema.org/a/Jjc968qnx1B7ZyhfPPM2CmTok)
 
-[JSON & YAML with Plain](https://asciinema.org/a/gazSVd58674UO2mxpQolNlN0o)
+[JSON & YAML with Plain](https://asciinema.org/a/n2XIwAORM1ad0M0AjIkqMxdmL)
 
-[JSON & YAML with Json](https://asciinema.org/a/G7jf1oXrzIacmlDXeCpRpci2k)
+[JSON & YAML with Json](https://asciinema.org/a/FNaJMmnpS6S32X6XHjRwLTf5u)
