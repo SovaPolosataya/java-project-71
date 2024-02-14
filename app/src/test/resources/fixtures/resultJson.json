@@ -15,13 +15,13 @@
 }, {
   "STATUS" : "CHANGED",
   "KEY" : "default",
-  "VALUE" : "null",
+  "VALUE" : null,
   "newVALUE" : [ "value1", "value2" ]
 }, {
   "STATUS" : "CHANGED",
   "KEY" : "id",
   "VALUE" : 45,
-  "newVALUE" : "null"
+  "newVALUE" : null
 }, {
   "STATUS" : "DELETED",
   "KEY" : "key1",
