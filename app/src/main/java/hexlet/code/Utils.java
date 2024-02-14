@@ -30,4 +30,11 @@ public class Utils {
         String content = Files.readString(path);
         return content;
     }
+
+    public static Object valueNull(Object value) {
+        if (value == null) {
+            value = "null";
+        }
+        return value;
+    }
 }

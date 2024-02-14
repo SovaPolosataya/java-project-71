@@ -29,8 +29,8 @@ public class DiffComparator {
                                             .toList();
 
         for (var key : sortedKeys) {
-            Object value1 = valueNull(map1.get(key));
-            Object value2 = valueNull(map2.get(key));
+            Object value1 = map1.get(key);
+            Object value2 = map2.get(key);
 
             if (!map1.containsKey(key)) {
                 result.add(getMapForDiff(ADDED, key, value2));
@@ -45,13 +45,6 @@ public class DiffComparator {
             }
         }
         return result;
-    }
-
-    public static Object valueNull(Object value) {
-        if (value == null) {
-            value = "null";
-        }
-        return value;
     }
 
     public static Map<String, Object> getMapForDiff(String status, String key, Object value1, Object value2) {
