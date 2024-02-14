@@ -12,7 +12,7 @@ public class Json {
         ObjectMapper mapper = new ObjectMapper();
 
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
-        String mapIsJson = mapper.writeValueAsString(result);
-        return mapIsJson;
+        String resultViaJson = mapper.writeValueAsString(result);
+        return resultViaJson;
     }
 }
