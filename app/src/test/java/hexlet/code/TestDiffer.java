@@ -14,7 +14,7 @@ public class TestDiffer {
 
     @Test
     public void testGenerateJson() throws Exception {
-        String testResult = readFixtures(getPathFixtures("resultStylish.json"));
+        String testResult = readFixtures(getPathFixtures("resultStylish.txt"));
 
         String filePath1 = PATH + "file1.json";
         String filePath2 = PATH + "file2.json";
@@ -25,7 +25,7 @@ public class TestDiffer {
 
     @Test
     public void testGenerateYml() throws Exception {
-        String testResult = readFixtures(getPathFixtures("resultStylish.json"));
+        String testResult = readFixtures(getPathFixtures("resultStylish.txt"));
 
         String filePath1 = PATH + "file1.yml";
         String filePath2 = PATH + "file2.yml";
@@ -36,7 +36,7 @@ public class TestDiffer {
 
     @Test
     public void testGenerateYmlAndJson() throws Exception {
-        String testResult = readFixtures(getPathFixtures("resultStylish.json"));
+        String testResult = readFixtures(getPathFixtures("resultStylish.txt"));
 
         String filePath1 = PATH + "file1.yml";
         String filePath2 = PATH + "file2.json";
@@ -47,7 +47,7 @@ public class TestDiffer {
 
     @Test
     public void testGenerateWithoutFormat() throws Exception {
-        String testResult = readFixtures(getPathFixtures("resultStylish.json"));
+        String testResult = readFixtures(getPathFixtures("resultStylish.txt"));
 
         String filePath1 = PATH + "file1.json";
         String filePath2 = PATH + "file2.json";
@@ -57,7 +57,7 @@ public class TestDiffer {
 
     @Test
     public void testGenerateJsonPlain() throws Exception {
-        String testResult = readFixtures(getPathFixtures("resultPlain.json"));
+        String testResult = readFixtures(getPathFixtures("resultPlain.txt"));
 
         String filePath1 = PATH + "file1.json";
         String filePath2 = PATH + "file2.json";
@@ -68,7 +68,7 @@ public class TestDiffer {
 
     @Test
     public void testGenerateYamlPlain() throws Exception {
-        String testResult = readFixtures(getPathFixtures("resultPlain.json"));
+        String testResult = readFixtures(getPathFixtures("resultPlain.txt"));
 
         String filePath1 = PATH + "file1.yml";
         String filePath2 = PATH + "file2.yml";
